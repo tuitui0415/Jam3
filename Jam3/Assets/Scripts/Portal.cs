@@ -6,19 +6,13 @@ public class Portal : MonoBehaviour
 {   
 
     public GameObject portal;
-    private GameObject player;
+    public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
+    private void OnTriggerEnter2D(Collider2D collision) {
+        GameObject collisionGameObject = collision.gameObject;
+        if (collisionGameObject.name == "player") {
             player.transform.position = new Vector2(portal.transform.position.x, portal.transform.position.y);
-        }
+        } 
     }
 }
