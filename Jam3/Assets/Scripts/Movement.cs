@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Physics;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {   
@@ -23,6 +24,11 @@ public class Movement : MonoBehaviour
         if(Input.GetButtonUp("Jump")&& rb.velocity.y>0f){
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y*0.5f);
         }
+        // switch scenes for debugging
+         if (Input.GetKeyDown(KeyCode.Z) ){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+         }
+             
 
         Flip();
     }
@@ -42,6 +48,7 @@ public class Movement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
 
 
 }
